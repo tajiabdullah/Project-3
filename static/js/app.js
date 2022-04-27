@@ -1,9 +1,19 @@
 console.log("Welcome")
 
 function drawGlobe(data) {
-	let countries = Object.values(data.Country);
-	let happinessRank = Object.values(data.Rank);
-	let happinessScore = Object.values(data.Score);
+
+
+	let countries = [];
+	let happinessRank = [];
+	let happinessScore = [];
+
+	for (let i=0; i < data.length; i++) {
+
+		countries.push(data[i]["Country"])
+		happinessRank.push(data[i]["Rank"])
+		happinessScore.push(data[i]["Score"])
+	
+	}
 	// let gdp = Object.values(data.GDP_per_Capita);
 	// let socialSupport = Object.values(data.Social_Support);
 	// let lifeExpectancy = Object.values(data.Healthy_Life_Expectancy);
@@ -55,7 +65,7 @@ function drawGlobe(data) {
     }];
 
     var layoutGlobe = {
-    	title:`<b>${year}</b>`,
+    	title:`<b>2021</b>`,
     	titlefont:{
     		family:"'Barlow Condensed' , 'sans-serif'",
 	    	size:'20',
@@ -117,8 +127,7 @@ function drawGlobe(data) {
  */
 
 
-d3.json("http://localhost:5000/world_happiness").then(function(data){
-    console.log(data)
+d3.json("http://localhost:5000/get_data").then(function(data){
 	drawGlobe(data)
 /*     console.log(data.Date)
     lineChart(data) */

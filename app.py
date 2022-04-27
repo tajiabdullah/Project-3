@@ -2,8 +2,9 @@
 # Dependencies
 ##################################################
 
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, jsonify
 import pandas as pd
+from bson.json_util import dumps
 from flask_pymongo import PyMongo
 
 ##################################################
@@ -26,14 +27,20 @@ mars_data = mongo.db.world_happiness_data.find_one()
 ##################################################
 
 # Created API from the data stored in Postgres database
-@app.route('/')
+@app.route('/get_data')
 def happiness():
     world_happiness_data = list(mongo.db.world_happiness_data.find())
+    # ret = dict()
+    # # cursor = db.scores.find({"id": { "$gt": id_param }}).sort("id",1).limit(20) #ascending
+    # for document in world_happiness_data:
+    #     ret = document
+
+    return dumps(world_happiness_data)
     #print(list(world_happiness_data))  
-    return render_template('index.html', world_happiness_data = world_happiness_data)
+    # return render_template('index.html', world_happiness_data = world_happiness_data)
 
 # Loaded the index.html when requesting the https://localhost:5000
-@app.route('/123')
+@app.route('/')
 def index():
     return render_template('index.html')
 
