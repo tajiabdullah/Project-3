@@ -25,6 +25,13 @@
           </div>
         </div>
         <hr>
+        <div>
+          <ul>
+            {% for happiness in world_happiness_data %}
+                <li>{{ happiness.Country }}: {{ happiness.Score }}: {{ happiness.Geometry }} </li>
+                {% endfor %}
+          </ul>
+        </div>
         <!-- div class="row">
           <div class="col-12">
             <div id="lineplot"></div>

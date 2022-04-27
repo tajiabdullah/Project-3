@@ -2,9 +2,9 @@
 # Dependencies
 ##################################################
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import pandas as pd
-from sqlalchemy import create_engine
+from flask_pymongo import PyMongo
 
 ##################################################
 # Flask Initiation
@@ -13,18 +13,27 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 ##################################################
+# MangoDB Initiation
+##################################################
+
+app.config["MONGO_URI"] = "mongodb://localhost:27017/world_happiness"
+mongo = PyMongo(app)
+
+mars_data = mongo.db.world_happiness_data.find_one()
+
+##################################################
 # Flask Routes
 ##################################################
 
 # Created API from the data stored in Postgres database
-@app.route('/world_happiness')
+@app.route('/')
 def happiness():
-    engine = create_engine('postgresql://postgres:postgres@localhost:5432/world_happiness')
-    df = pd.read_sql_table("world_happiness_data",con=engine)
-    return df.to_json(orient='split', index=False, indent=4)
+    world_happiness_data = list(mongo.db.world_happiness_data.find())
+    #print(list(world_happiness_data))  
+    return render_template('index.html', world_happiness_data = world_happiness_data)
 
 # Loaded the index.html when requesting the https://localhost:5000
-@app.route('/')
+@app.route('/123')
 def index():
     return render_template('index.html')
 
