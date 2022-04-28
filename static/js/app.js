@@ -14,12 +14,7 @@ function drawGlobe(data) {
 		happinessScore.push(data[i]["Score"])
 	
 	}
-	// let gdp = Object.values(data.GDP_per_Capita);
-	// let socialSupport = Object.values(data.Social_Support);
-	// let lifeExpectancy = Object.values(data.Healthy_Life_Expectancy);
-	// let freedom = Object.values(data.Freedom_of_Choice); 
-	// let generosity = Object.values(data.Generosity);
-	// let corruption = Object.values(data.Perception_of_Corruption)
+
 
 
 	var dataGlobe = [{
@@ -92,6 +87,74 @@ function drawGlobe(data) {
     Plotly.newPlot('globe', dataGlobe, layoutGlobe, {showLink: false},{responsive: true});
 
 }
+
+// function radar(data){
+// 	var chart_labels = ['Avg GDP per Capita', 'Avg Social Support', 'Avg Life Expectancy', 'Avg Freedom', 'Avg Generosity', 'Avg Perception_of_Corruption'];
+// 	var initial_label = ['Western Europe'];
+
+// 	var allBackgroundColor = "rgb(114, 105, 204, 0.3)";
+// 	var allBorderColor = "rgb(114, 105, 204, 0.1)";
+
+// 	var radarChart = new Chart(document.getElementById("myChart").getContext('2d'), {
+  
+// 		type: 'radar',
+	  
+// 		data: {
+// 		  labels: chart_labels,
+		  
+// 		  datasets: [
+// 			{ 
+// 			  data: ,
+// 			  label: initial_label,
+// 			  borderColor: allBorderColor,
+// 			  backgroundColor: allBackgroundColor,
+// 			  borderWidth: 0,
+// 			  pointRadius: 0,
+// 			  pointHitRadius: 8,
+// 			}
+// 		  ]
+// 		},
+// 		options: {
+// 			legend: {
+// 			  display: false,
+// 			},
+// 			responsive: true,
+		
+// 			scale:{
+// 			  ticks: {
+// 				beginAtZero: true,
+// 				min: 0,
+// 				max: 1.6,
+// 				backdropColor: '#e9eaea',
+// 				backdropPaddingX: 0,
+// 				backdropPaddingY: 0,
+// 			},
+// 			  pointLabels: {
+// 				display: true,
+// 				fontSize: 10,
+// 			  }
+// 		  },
+		
+// 		  tooltips: {
+// 			  callbacks: {
+// 			   label: function(tooltipItem, data) {
+// 							var label = data.datasets[tooltipItem.datasetIndex].label || '';
+		
+// 							if (label) {
+// 								label += ': ';
+// 							}
+// 							label += Math.round(tooltipItem.yLabel * 1000) / 1000;
+// 							return label;
+// 				}
+// 			  },
+// 			  displayColors: false,
+// 			},
+		
+// 		},
+		
+// 	});
+// }
+
 /* function lineChart(data){
     // convert the dictionary to array
     let date = Object.values(data.Date)
@@ -133,7 +196,7 @@ d3.json("http://localhost:5000/get_data").then(function(data){
     lineChart(data) */
 })
 
-
+ 
 // // Call updatePlotly2 and updateDemoInfo functions to change the bar chart, bubble chart, demographic info, and gauge chart upon selection of id in dropdown menu
 // function optionChanged(id) {
 // 	updatePlotly2(id);
