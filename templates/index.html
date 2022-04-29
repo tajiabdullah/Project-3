@@ -5,10 +5,11 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body {
-  background-image: url('https://ggsc.s3.amazonaws.com/images/uploads/Stick_figure_map_of_world.jpg');
+  /*background-image: url('https://ggsc.s3.amazonaws.com/images/uploads/Stick_figure_map_of_world.jpg');*/
   background-repeat: no-repeat;
   background-attachment: fixed;  
   background-size: cover;
@@ -81,6 +82,9 @@
     <a href="#region">Region</a>
   </div>
 </div>
+
+<div id = "radar"></div>
+<div id = "barchart"></div>
 <script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
 <script>
 /* When the user clicks on the button,

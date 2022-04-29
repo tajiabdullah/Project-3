@@ -40,21 +40,21 @@ function drawGlobe(data) {
 		    ticks:"inside",
 		    tickwidth:'2',
 		    ticklen:"7",
-		    tickcolor:"#fff",
+		    tickcolor:"#000",
 		    tickfont:{
 		    	family:"'Barlow Condensed' , 'sans-serif'",
 		    	size:'18',
-		    	color:"#fff",
+		    	color:"#000",
 		    },
-		    title:"<b>Happiness Rank</b>",
+		    title:"Happiness Rank",
 		    titlefont:{
 		    	family:"'Barlow Condensed' , 'sans-serif'",
 		    	size:'20',
-		    	color:"#fff",
+		    	color: '#000',
 		    },
 		    titleside:"right",
 		    outlinewidth:"1",
-		    outlinecolor:'#fff',
+		    outlinecolor:'#000',
 	    }
     
     }];
@@ -87,6 +87,86 @@ function drawGlobe(data) {
     Plotly.newPlot('globe', dataGlobe, layoutGlobe, {showLink: false},{responsive: true});
 
 }
+
+// function barchart(data)
+// 	var trace1 = {
+// 		x: ['giraffes', 'orangutans', 'monkeys'],
+// 		y: [20, 14, 23],
+// 		type: 'bar'
+// 	};
+// 	let data1 = [trace1];
+// 	Plotly.newPlot('barchart', data1);
+
+function barchart(data1){
+let countries = [];
+	let happinessRank = [];
+	let happinessScore = [];
+
+	for (let i=0; i < data1.length; i++) {
+
+		countries.push(data1[i]["Country"])
+		happinessRank.push(data1[i]["Rank"])
+		happinessScore.push(data1[i]["Score"])
+	}
+
+
+	var data = [ 	
+		{
+		  x: countries.slice(0,10),
+		  y: happinessScore.slice(0,10),
+		  type: 'bar'
+		}
+	  ]
+	  Plotly.newPlot('barchart', data);
+	}
+
+// function radar(data)
+// 	var config = {
+// 		type: 'radar',
+// 		data: data,
+// 		options: {
+// 		elements: {
+// 			line: {
+// 			borderWidth: 3
+// 			}
+// 		}
+// 		},
+// 	};
+
+//   var data = {
+// 	labels: [
+// 	  'Eating',
+// 	  'Drinking',
+// 	  'Sleeping',
+// 	  'Designing',
+// 	  'Coding',
+// 	  'Cycling',
+// 	  'Running'
+// 	],
+// 	datasets: [{
+// 	  label: 'My First Dataset',
+// 	  data: [65, 59, 90, 81, 56, 55, 40],
+// 	  fill: true,
+// 	  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+// 	  borderColor: 'rgb(255, 99, 132)',
+// 	  pointBackgroundColor: 'rgb(255, 99, 132)',
+// 	  pointBorderColor: '#fff',
+// 	  pointHoverBackgroundColor: '#fff',
+// 	  pointHoverBorderColor: 'rgb(255, 99, 132)'
+// 	}, {
+// 	  label: 'My Second Dataset',
+// 	  data: [28, 48, 40, 19, 96, 27, 100],
+// 	  fill: true,
+// 	  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+// 	  borderColor: 'rgb(54, 162, 235)',
+// 	  pointBackgroundColor: 'rgb(54, 162, 235)',
+// 	  pointBorderColor: '#fff',
+// 	  pointHoverBackgroundColor: '#fff',
+// 	  pointHoverBorderColor: 'rgb(54, 162, 235)'
+// 	}]
+//   };
+
+  
 
 // function radar(data){
 // 	var chart_labels = ['Avg GDP per Capita', 'Avg Social Support', 'Avg Life Expectancy', 'Avg Freedom', 'Avg Generosity', 'Avg Perception_of_Corruption'];
@@ -192,6 +272,7 @@ function drawGlobe(data) {
 
 d3.json("http://localhost:5000/get_data").then(function(data){
 	drawGlobe(data)
+	barchart(data);
 /*     console.log(data.Date)
     lineChart(data) */
 })
