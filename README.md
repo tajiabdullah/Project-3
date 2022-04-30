@@ -23,14 +23,13 @@ Comparative International Psychological Study
  
 ### PROJECT IDEA
 
-This project’s concept includes graphically displaying the dataset on a visually appealing dashboard, which will allow the viewer to determine the “happiness” rankings of 150 different countries. Furthermore, it will allow the viewer to assess how factors, such as (1) economic production, (2) social support, (3) life expectancy, (4) freedom, (5) absence of corruption, and (6) generosity, contribute to each country’s score.  
+This project’s concept includes graphically displaying the dataset on a visually appealing dashboard, which will allow the viewer to determine the “happiness” rankings of 149 different countries. Furthermore, it will allow the viewer to assess how factors, such as (1) economic production, (2) social support, (3) life expectancy, (4) freedom, (5) absence of corruption, and (6) generosity, contribute to each country’s score.  
 
 ### PROJECT PLAN
 
 The project plan is as follows: 
 * Clean the data using Python’s pandas in Jupyter Notebook. 
 * Load the cleaned data into MongoDB. 
-* Convert the cleaned data from a “.ipynb” file to a “.py” file.
 * Create a Web Application using Flask that converts the cleaned data into a “.json” format, which stores it onto http://127.0.0.1:5000/ as an Application Programming Interface (API). 
 * Utilize the API to load the data with D3 on JavaScript and create the Plotly dashboard. 
 * Create an HTML file to display the Plotly dashboard on a webpage. 
