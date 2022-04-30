@@ -8,7 +8,6 @@
 * Anthony Garcia
 * Justin Kiang
 * Pooja Mahajan
-* Kimberly Trejo
  
 ### PROJECT CATEGORY
 
