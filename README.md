@@ -29,7 +29,7 @@ This project’s concept includes graphically displaying the dataset on a visual
 
 The project plan is as follows: 
 * Clean the data using Python’s pandas in Jupyter Notebook. 
-* Load the cleaned data into PostgreSQL. 
+* Load the cleaned data into MongoDB. 
 * Convert the cleaned data from a “.ipynb” file to a “.py” file.
 * Create a Web Application using Flask that converts the cleaned data into a “.json” format, which stores it onto http://127.0.0.1:5000/ as an Application Programming Interface (API). 
 * Utilize the API to load the data with D3 on JavaScript and create the Plotly dashboard. 
