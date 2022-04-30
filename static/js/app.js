@@ -176,13 +176,13 @@ function bubbleChart(data2){
 	  for (let i  = 0; i <= 39; i++){
 
 		if(i<10){
-			myColors.push('rgb(255, 144, 14)')
-		}else if(i<=20){
-			myColors.push('rgb(255, 65, 54)')
-		}else if(i<=30){
 			myColors.push('rgb(44, 160, 101)')
-		}else if(i<=39){
+		}else if(i<=20){
 			myColors.push('rgb(93, 164, 214)')
+		}else if(i<=30){
+			myColors.push('rgb(255, 144, 14)')
+		}else if(i<=39){
+			myColors.push('rgb(255, 65, 54)')
 		}
 	  }
       var trace2 = {
@@ -249,15 +249,15 @@ function bubbleChart2(data3){
 	myColors = []
 	for (let i  = 0; i <= 39; i++){
 
-	  if(i<10){
-		  myColors.push('rgb(255, 144, 14)')
-	  }else if(i<=20){
-		  myColors.push('rgb(255, 65, 54)')
-	  }else if(i<=30){
-		  myColors.push('rgb(44, 160, 101)')
-	  }else if(i<=39){
-		  myColors.push('rgb(93, 164, 214)')
-	  }
+		if(i<10){
+			myColors.push('rgb(44, 160, 101)')
+		}else if(i<=20){
+			myColors.push('rgb(93, 164, 214)')
+		}else if(i<=30){
+			myColors.push('rgb(255, 144, 14)')
+		}else if(i<=39){
+			myColors.push('rgb(255, 65, 54)')
+		}
 	}
 	var trace3 = {
 	  x : perception.slice(1,20).concat(perception.slice(130,149)),
@@ -323,15 +323,15 @@ function bubbleChart3(data4){
 	myColors = []
 	for (let i  = 0; i <= 39; i++){
 
-	  if(i<10){
-		  myColors.push('rgb(255, 144, 14)')
-	  }else if(i<=20){
-		  myColors.push('rgb(255, 65, 54)')
-	  }else if(i<=30){
-		  myColors.push('rgb(44, 160, 101)')
-	  }else if(i<=39){
-		  myColors.push('rgb(93, 164, 214)')
-	  }
+		if(i<10){
+			myColors.push('rgb(44, 160, 101)')
+		}else if(i<=20){
+			myColors.push('rgb(93, 164, 214)')
+		}else if(i<=30){
+			myColors.push('rgb(255, 144, 14)')
+		}else if(i<=39){
+			myColors.push('rgb(255, 65, 54)')
+		}
 	}
 	var trace4 = {
 	  x : generosity.slice(1,20).concat(generosity.slice(130,149)),
