@@ -116,6 +116,37 @@ let countries = [];
 	
 	  Plotly.newPlot('barchart', data, layout);
 	}
+	d3.selectAll("#countries").on("change", updatebarchart);	
+function updatebarchart(){
+	var dropdownMenu = d3.select("#countries");
+  // Assign the value of the dropdown menu option to a variable
+  var countryName = dropdownMenu.property("value");
+console.log(countryName)
+	d3.json("http://localhost:5000/get_data").then(function(data){
+		function selectCountry(c) {
+			console.log(countryName)
+			return c["Region"] == countryName;
+		  }
+		  
+		  // filter() uses the custom function as its argument
+		  let filteredData = data.filter(selectCountry);
+		  
+		
+			let countries = [];
+				let happinessRank = [];
+				let happinessScore = [];
+			
+				for (let i=0; i < filteredData.length; i++) {
+			
+					countries.push(filteredData[i]["Country"])
+					happinessRank.push(filteredData[i]["Rank"])
+					happinessScore.push(filteredData[i]["Score"])
+				}
+				Plotly.restyle("barchart", "x", [countries]);
+				Plotly.restyle("barchart", "y", [happinessScore]);
+			  
+	})
+}
 
 function barchart2(data10){
 		let countries = [];

@@ -72,17 +72,35 @@
 <h1><center>World Happiness Report 2021</center></h1>
 <p><center>Would you like to know more about the happiest countries?</center></p>
 
-<center><div class="dropdown">
+<!-- <center><div class="dropdown">
 <button onclick="myFunction()" class="dropbtn">Click Here</button>
   <div id="myDropdown" class="dropdown-content">
-    <!-- <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"> -->
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"> 
     <center><a href="#barchart">Happiest Countries</a></center>
     <a href="#barchart2">Least Happiest Countries</a>
     <a href="#bubble">GDP v. Life Expectancy</a>
     <a href="#bubble2">Freedom of Choice v. Perception of Corruption</a>
     <a href="#bubble3">Social Support v. Generosity</a></center>
   </div>
-</div><br><hr>
+</div> -->
+
+<label for="countries">Choose a Region:</label>
+<select name="countries" id="countries">
+  <option value="North America">North America</option>
+  <option value="AUS and NZ">AUS and NZ</option>
+  <option value="Middle East and North Africa">Middle East and North Africa</option>
+  <option value="Eastern Europe">Eastern Europe</option>
+  <option value="Central Europe">Central Europe</option>
+  <option value="Southeast Asia">Southeast Asia</option>
+  <option value="South Asia">South Asia</option>
+  <option value="Sub-Saharan Africa">Sub-Saharan Africa</option>
+  <option value="Western Europe">Western Europe</option>
+  <option value="Latin American and Caribbean">Latin American and Caribbean</option>
+  
+</select>
+
+
+<br><hr>
 <div id = "globe"></div><br>
 <div id = "barchart"></div><br>
 <div id = "barchart2"></div><br>

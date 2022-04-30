@@ -3,6 +3,7 @@
 ##################################################
 
 from flask import Flask, render_template, redirect, jsonify
+from flask_cors import CORS
 import pandas as pd
 from bson.json_util import dumps
 from flask_pymongo import PyMongo
@@ -12,7 +13,7 @@ from flask_pymongo import PyMongo
 ##################################################
 
 app = Flask(__name__)
-
+CORS(app)
 ##################################################
 # MangoDB Initiation
 ##################################################
