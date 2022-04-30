@@ -40,13 +40,11 @@ function drawGlobe(data) {
 		    ticklen:"7",
 		    tickcolor:"#000",
 		    tickfont:{
-		    	family:"'Barlow Condensed' , 'sans-serif'",
 		    	size:'18',
 		    	color:"#000",
 		    },
 		    title:"Happiness Rank",
 		    titlefont:{
-		    	family:"'Barlow Condensed' , 'sans-serif'",
 		    	size:'20',
 		    	color: '#000',
 		    },
@@ -58,11 +56,10 @@ function drawGlobe(data) {
     }];
 
     var layoutGlobe = {
-    	title:`<b>2021</b>`,
+    	title:`<b>Our Happy Planet</b>`,
     	titlefont:{
-    		family:"'Barlow Condensed' , 'sans-serif'",
 	    	size:'20',
-	    	color:"#fff",
+	    	color:"#000",
     	},
 	    geo: {
 		    showocean: true,
@@ -102,23 +99,58 @@ let countries = [];
 
 	var data = [ 	
 		{
-		  x: countries.slice(0,10),
-		  y: happinessScore.slice(0,10),
+		  x: countries.slice(0,20),
+		  y: happinessScore.slice(0,20),
+		  name: '<b>Top 20 Happiest Countries in 2021</b>',
 		  type: 'bar'
 		}
 	  ]
-	  Plotly.newPlot('barchart', data);
+	
+	  var layout = {
+		  title: '<b>Top 20 Happiest Countries in 2021</b>',
+		  yaxis: {
+			title: 'Happiness Score'
+
+		  }
+	  }
+	
+	  Plotly.newPlot('barchart', data, layout);
 	}
 
-function bubbleChart(data2){
-      // Create a bubble chart that displays each sample.
-      // 1. Use otu_ids for the x values.
-      // 2. Use sample_values for the y values.
-      // 3. Use sample_values for the marker size.
-      // 4. Use otu_ids for the marker colors.
-      // 5. Use otu_labels for the text values
+function barchart2(data10){
+		let countries = [];
+		let happinessRank = [];
+		let happinessScore = [];
+		
+			for (let i=0; i < data10.length; i++) {
+		
+				countries.push(data10[i]["Country"])
+				happinessRank.push(data10[i]["Rank"])
+				happinessScore.push(data10[i]["Score"])
+			}
+		
+		
+			var data10 = [ 	
+				{
+				  x: countries.slice(129,149),
+				  y: happinessScore.slice(129,149),
+				  name: '<b>Top 20 Least Happiest Countries in 2021</b>',
+				  type: 'bar'
+				}
+			  ]
+			
+			  var layout10 = {
+				  title: '<b>Top 20 Least Happiest Countries in 2021</b>',
+				  yaxis: {
+					title: 'Happiness Score'
+		
+				  }
+			  }
+			
+			  Plotly.newPlot('barchart2', data10, layout10);
+			}
 
-      // Create the trace for the bubble chart
+function bubbleChart(data2){
 
 	  let countries = [];
 	  let happinessScore = [];
@@ -131,12 +163,12 @@ function bubbleChart(data2){
 	  for (let i=0; i < data2.length; i++) {
   
 		  countries.push(data2[i]["Country"])
-		  happinessScore.push(data2[i]["Score"])
+		  happinessScore.push(data2[i]["Score"] *5)
 		  happinessRank.push(data2[i]["Rank"])
 		  gdp.push(data2[i]["GDP per Capita"])
 		  regions.push(data2[i]["Region"])
 		  lifeExpectancy.push(data2[i]["Healthy Life Expectancy"])
-		  freedom.push(data2[i]["Freedom of Choice"] * 50)
+		  freedom.push(data2[i]["Freedom of Choice"])
 	  }
 	  console.log(happinessScore.slice(1,20).concat(happinessScore.slice(130,150)))
 
@@ -145,7 +177,6 @@ function bubbleChart(data2){
 
 		if(i<10){
 			myColors.push('rgb(255, 144, 14)')
-
 		}else if(i<=20){
 			myColors.push('rgb(255, 65, 54)')
 		}else if(i<=30){
@@ -155,26 +186,31 @@ function bubbleChart(data2){
 		}
 	  }
       var trace2 = {
-		x : happinessScore.slice(1,20).concat(happinessScore.slice(130,149)),
+		x : lifeExpectancy.slice(1,20).concat(lifeExpectancy.slice(130,149)),
 		y : gdp.slice(1,20).concat(gdp.slice(130,149)),
 		text : countries.slice(1,20).concat(countries.slice(130,149)),
 		mode : 'markers',
 		marker : {
 			color : myColors,
-			size : freedom
+			size : happinessScore
 
 		}   
 	};
 
-	// Create the layout for the bubble chart
 	var layout2 = {
-		title: '<b>Bubble Chart</b>',
+		title: '<b>GDP Per Capita v. Life Expectancy, 2021</b>',
+		yaxis: {
+			title: "GDP per Capita in billions"
+		},
+		xaxis: {
+			title: "Life Expectancy in years"
+		},
 		automargin: true,
 		autosize: true,
 		showlegend: false,
 		 height: 500,
 		 width: 1000,
-		margin: {
+		 margin: {
 			l: 150,
 			r: 50,
 			b: 50,
@@ -183,15 +219,166 @@ function bubbleChart(data2){
 		  }
 	};
 
-	// Plot the new bubble chart using Plotly
+
+
 	var data2 = [trace2];
 	var config = {responsive:true}
 	Plotly.newPlot('bubble', data2,layout2,config)
 };
 
+function bubbleChart2(data3){
+
+	let countries = [];
+	let happinessScore = [];
+	let happinessRank = [];
+	let regions = [];
+	let perception = [];
+	let freedom =[];
+
+	for (let i=0; i < data3.length; i++) {
+
+		countries.push(data3[i]["Country"])
+		happinessScore.push(data3[i]["Score"] *5)
+		happinessRank.push(data3[i]["Rank"])
+		regions.push(data3[i]["Region"])
+		perception.push(data3[i]["Perception of Corruption"])
+		freedom.push(data3[i]["Freedom of Choice"])
+	}
+	console.log(happinessScore.slice(1,20).concat(happinessScore.slice(130,150)))
+
+	myColors = []
+	for (let i  = 0; i <= 39; i++){
+
+	  if(i<10){
+		  myColors.push('rgb(255, 144, 14)')
+	  }else if(i<=20){
+		  myColors.push('rgb(255, 65, 54)')
+	  }else if(i<=30){
+		  myColors.push('rgb(44, 160, 101)')
+	  }else if(i<=39){
+		  myColors.push('rgb(93, 164, 214)')
+	  }
+	}
+	var trace3 = {
+	  x : perception.slice(1,20).concat(perception.slice(130,149)),
+	  y : freedom.slice(1,20).concat(freedom.slice(130,149)),
+	  text : countries.slice(1,20).concat(countries.slice(130,149)),
+	  mode : 'markers',
+	  marker : {
+		  color : myColors,
+		  size : happinessScore
+
+	  }   
+  };
+
+  var layout3 = {
+	  title: '<b>Freedom of Choice v. Perception of Corruption, 2021</b>',
+	  yaxis: {
+		  title: "Freedom of Choice"
+	  },
+	  xaxis: {
+		  title: "Perception of Corruption"
+	  },
+	  automargin: true,
+	  autosize: true,
+	  showlegend: false,
+	   height: 500,
+	   width: 1000,
+	   margin: {
+		  l: 150,
+		  r: 50,
+		  b: 50,
+		  t: 50,
+		  pad: 4
+		}
+  };
+
+
+
+  var data3 = [trace3];
+  var config = {responsive:true}
+  Plotly.newPlot('bubble2', data3, layout3,config)
+};
+
+function bubbleChart3(data4){
+
+	let countries = [];
+	let happinessScore = [];
+	let happinessRank = [];
+	let regions = [];
+	let social = [];
+	let generosity =[];
+
+	for (let i=0; i < data4.length; i++) {
+
+		countries.push(data4[i]["Country"])
+		happinessScore.push(data4[i]["Score"] *5)
+		happinessRank.push(data4[i]["Rank"])
+		regions.push(data4[i]["Region"])
+		social.push(data4[i]["Social Support"])
+		generosity.push(data4[i]["Generosity"])
+	}
+	console.log(happinessScore.slice(1,20).concat(happinessScore.slice(130,150)))
+
+	myColors = []
+	for (let i  = 0; i <= 39; i++){
+
+	  if(i<10){
+		  myColors.push('rgb(255, 144, 14)')
+	  }else if(i<=20){
+		  myColors.push('rgb(255, 65, 54)')
+	  }else if(i<=30){
+		  myColors.push('rgb(44, 160, 101)')
+	  }else if(i<=39){
+		  myColors.push('rgb(93, 164, 214)')
+	  }
+	}
+	var trace4 = {
+	  x : generosity.slice(1,20).concat(generosity.slice(130,149)),
+	  y : social.slice(1,20).concat(social.slice(130,149)),
+	  text : countries.slice(1,20).concat(countries.slice(130,149)),
+	  mode : 'markers',
+	  marker : {
+		  color : myColors,
+		  size : happinessScore
+
+	  }   
+  };
+
+  var layout4 = {
+	  title: '<b>Social Support v. Generosity, 2021</b>',
+	  yaxis: {
+		  title: "Social Support"
+	  },
+	  xaxis: {
+		  title: "Generosity"
+	  },
+	  automargin: true,
+	  autosize: true,
+	  showlegend: false,
+	   height: 500,
+	   width: 1000,
+	   margin: {
+		  l: 150,
+		  r: 50,
+		  b: 50,
+		  t: 50,
+		  pad: 4
+		}
+  };
+
+
+
+  var data4 = [trace4];
+  var config = {responsive:true}
+  Plotly.newPlot('bubble3', data4, layout4,config)
+};
 
 d3.json("http://localhost:5000/get_data").then(function(data){
 	drawGlobe(data)
 	barchart(data)
-	bubbleChart(data);
+	barchart2(data)
+	bubbleChart(data)
+	bubbleChart2(data)
+	bubbleChart3(data);
 })
