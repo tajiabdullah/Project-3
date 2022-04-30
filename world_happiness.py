@@ -177,6 +177,7 @@ print(df13.to_string())
 
 # Grouped by Region and determined mean
 region_df = df13.groupby(["Region"]).mean()
+region_df
 
 
 # In[13]:
