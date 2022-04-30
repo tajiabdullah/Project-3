@@ -56,7 +56,7 @@ function drawGlobe(data) {
     }];
 
     var layoutGlobe = {
-    	title:`<b>Our Happy Planet</b>`,
+    	title:`<b>You Are Here</b>`,
     	titlefont:{
 	    	size:'20',
 	    	color:"#000",
@@ -99,15 +99,15 @@ let countries = [];
 
 	var data = [ 	
 		{
-		  x: countries.slice(0,20),
-		  y: happinessScore.slice(0,20),
-		  name: '<b>Top 20 Happiest Countries in 2021</b>',
+		  x: countries.slice(0,100),
+		  y: happinessScore.slice(0,100),
+		  name: '<b>Happiest Countries in 2021</b>',
 		  type: 'bar'
 		}
 	  ]
 	
 	  var layout = {
-		  title: '<b>Top 20 Happiest Countries in 2021</b>',
+		  title: '<b>Happiest Countries in 2021</b>',
 		  yaxis: {
 			title: 'Happiness Score'
 
@@ -146,6 +146,38 @@ console.log(countryName)
 				Plotly.restyle("barchart", "y", [happinessScore]);
 			  
 	})
+}
+function barchart6(data6){
+	let countries = [];
+		let happinessRank = [];
+		let happinessScore = [];
+	
+		for (let i=0; i < data6.length; i++) {
+	
+			countries.push(data6[i]["Country"])
+			happinessRank.push(data6[i]["Rank"])
+			happinessScore.push(data6[i]["Score"])
+		}
+	
+	
+		var data6 = [ 	
+			{
+			  x: countries.slice(0,20),
+			  y: happinessScore.slice(0,20),
+			  name: '<b>Top 20 Happiest Countries in 2021</b>',
+			  type: 'bar'
+			}
+		  ]
+		
+		  var layout6 = {
+			  title: '<b>Top 20 Happiest Countries in 2021</b>',
+			  yaxis: {
+				title: 'Happiness Score'
+	
+			  }
+		  }
+		
+		  Plotly.newPlot('barchart6', data6, layout6);
 }
 
 function barchart2(data10){
@@ -409,6 +441,7 @@ d3.json("http://localhost:5000/get_data").then(function(data){
 	drawGlobe(data)
 	barchart(data)
 	barchart2(data)
+	barchart6(data)
 	bubbleChart(data)
 	bubbleChart2(data)
 	bubbleChart3(data);
